@@ -11,7 +11,7 @@ public class modifiers{
   private int priv_variable;    // only accessible by container class
   protected int prot_variable;  // only accessible by the package
   public int pub_variable;      // accessible when the class is accessible
-  static int stat_variable;     // independent of instantiation
+  static int stat_variable;     // independent of instantiation (changing value will change value in all instances)
   final int fin_variable;       // cannot have value changed
   
   //---------------------------------------

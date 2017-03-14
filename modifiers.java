@@ -12,7 +12,7 @@ public class modifiers{
   protected int prot_variable;  // only accessible by the package
   public int pub_variable;      // accessible when the class is accessible
   static int stat_variable;     // independent of instantiation (changing value will change value in all instances)
-  final int fin_variable;       // cannot have value changed
+  final int fin_variable = 0;       // cannot have value changed (must have a value?)
   
   //---------------------------------------
   // Methods

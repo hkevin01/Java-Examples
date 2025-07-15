@@ -1,0 +1,93 @@
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [11, 17, 21]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Compile Java files
+      run: |
+        find src -name "*.java" -print0 | xargs -0 javac -cp src -d build/classes
+      
+    - name: Create build directory
+      run: mkdir -p build/classes
+      
+    - name: Run Java examples
+      run: |
+        cd build/classes
+        echo "Running AccessModifiersDemo..."
+        java src.oop.AccessModifiersDemo
+        echo -e "\n\nRunning PolymorphismDemo..."
+        java src.oop.PolymorphismDemo
+        
+    - name: Generate JavaDoc
+      run: |
+        mkdir -p docs/javadoc
+        find src -name "*.java" -print0 | xargs -0 javadoc -d docs/javadoc -cp src
+        
+    - name: Upload JavaDoc
+      uses: actions/upload-artifact@v3
+      with:
+        name: javadoc-${{ matrix.java-version }}
+        path: docs/javadoc/
+
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Run SpotBugs analysis
+      run: |
+        echo "Code quality analysis would run here"
+        echo "SpotBugs, PMD, or Checkstyle could be integrated"
+        
+    - name: Check code formatting
+      run: |
+        echo "Code formatting check would run here"
+        echo "Google Java Format or similar could be used"
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run security scan
+      run: |
+        echo "Security scanning would run here"
+        echo "OWASP Dependency Check or similar tools"

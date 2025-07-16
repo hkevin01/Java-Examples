@@ -20,33 +20,89 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * ConcurrencyDemo - Demonstrates Java Concurrency and Multithreading
  * 
+ * WHY CONCURRENCY MATTERS:
+ * Modern applications need concurrency to:
+ * - Utilize multiple CPU cores effectively (performance)
+ * - Handle multiple users simultaneously (scalability)
+ * - Perform I/O operations without blocking the entire application (responsiveness)
+ * - Implement real-time systems and background processing (functionality)
+ * 
+ * CONCURRENCY CHALLENGES:
+ * - Race conditions: Multiple threads accessing shared data simultaneously
+ * - Deadlocks: Threads waiting for each other indefinitely
+ * - Data corruption: Inconsistent state due to unsynchronized access
+ * - Performance overhead: Synchronization and context switching costs
+ * - Complexity: Harder to reason about, test, and debug
+ * 
+ * JAVA CONCURRENCY TOOLKIT:
+ * 1. Basic threading: Thread class, Runnable interface, thread lifecycle
+ * 2. Synchronization: synchronized keyword, locks, atomic operations
+ * 3. Thread pools: ExecutorService for managing thread resources
+ * 4. Concurrent collections: Thread-safe data structures
+ * 5. High-level constructs: CompletableFuture, parallel streams
+ * 
  * This comprehensive demo covers:
- * - Thread basics and lifecycle
- * - Synchronization mechanisms
- * - Thread pools and ExecutorService
- * - Concurrent collections
- * - Atomic operations
- * - Producer-Consumer pattern
- * - Thread-safe singleton patterns
- * - CompletableFuture and asynchronous programming
+ * - Thread basics and lifecycle (creating, starting, joining threads)
+ * - Synchronization mechanisms (synchronized, locks, atomic variables)
+ * - Thread pools and ExecutorService (managing thread resources efficiently)
+ * - Concurrent collections (thread-safe data structures)
+ * - Atomic operations (lock-free programming for simple operations)
+ * - Producer-Consumer pattern (classic concurrency problem)
+ * - Thread-safe singleton patterns (safe initialization in concurrent environments)
+ * - CompletableFuture and asynchronous programming (non-blocking operations)
+ * 
+ * LEARNING OBJECTIVES:
+ * 1. Understand fundamental concepts of concurrent programming
+ * 2. Learn to identify and prevent common concurrency problems
+ * 3. Master Java's concurrency utilities and best practices
+ * 4. Apply appropriate synchronization mechanisms for different scenarios
+ * 5. Design thread-safe applications with good performance characteristics
  * 
  * @author Java Examples Project
  * @version 1.0
  */
 
 // Thread Basics Example
+// This demonstrates the fundamental building blocks of Java threading
 
+/**
+ * SimpleTask - Demonstrates basic thread execution and lifecycle
+ * 
+ * RUNNABLE INTERFACE:
+ * - Preferred way to create tasks for threads (vs extending Thread class)
+ * - Allows implementing other interfaces (single inheritance limitation)
+ * - Separates the task (what to do) from the thread (how to execute)
+ * - Enables better resource management with thread pools
+ * 
+ * THREAD LIFECYCLE:
+ * NEW -> RUNNABLE -> RUNNING -> TERMINATED
+ * (with possible states: BLOCKED, WAITING, TIMED_WAITING)
+ */
 class SimpleTask implements Runnable {
-    private final String taskName;
-    private final int iterations;
+    private final String taskName;    // Immutable task identifier
+    private final int iterations;     // Number of work units to perform
     
+    /**
+     * Constructor for creating a named task with specified work amount
+     * 
+     * @param taskName human-readable name for debugging and logging
+     * @param iterations number of work cycles to perform
+     */
     public SimpleTask(String taskName, int iterations) {
         this.taskName = taskName;
         this.iterations = iterations;
     }
     
+    /**
+     * The actual work performed by the thread
+     * 
+     * THREAD IDENTIFICATION:
+     * Thread.currentThread().getName() helps identify which thread is executing
+     * This is crucial for debugging concurrent applications
+     */
     @Override
     public void run() {
+        // Log thread start with thread identification
         System.out.println("🚀 " + taskName + " started on thread: " + Thread.currentThread().getName());
         
         for (int i = 1; i <= iterations; i++) {

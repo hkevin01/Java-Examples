@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run AccessModifiersDemo",
+            "request": "launch",
+            "mainClass": "src.oop.AccessModifiersDemo",
+            "projectName": "Java-Examples",
+            "classPaths": ["build/classes"],
+            "preLaunchTask": "Compile All Java Files"
+        },
+        {
+            "type": "java",
+            "name": "Run PolymorphismDemo",
+            "request": "launch",
+            "mainClass": "src.oop.PolymorphismDemo",
+            "projectName": "Java-Examples",
+            "classPaths": ["build/classes"],
+            "preLaunchTask": "Compile All Java Files"
+        },
+        {
+            "type": "java",
+            "name": "Debug AccessModifiersDemo",
+            "request": "launch",
+            "mainClass": "src.oop.AccessModifiersDemo",
+            "projectName": "Java-Examples",
+            "classPaths": ["build/classes"],
+            "preLaunchTask": "Compile All Java Files",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Debug PolymorphismDemo",
+            "request": "launch",
+            "mainClass": "src.oop.PolymorphismDemo",
+            "projectName": "Java-Examples",
+            "classPaths": ["build/classes"],
+            "preLaunchTask": "Compile All Java Files",
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -132,7 +132,9 @@ java -cp out algorithms.SortingAlgorithmsDemo
 ```bash
 java -cp out patterns.DesignPatternsDemo
 java -cp out advanced.ConcurrencyDemo
+java -cp out advanced.MultithreadingDemo
 java -cp out advanced.StreamAPIDemo
+java -cp out advanced.FileIODemo
 ```
 
 **Phase 4 (Best Practices)**:
@@ -149,7 +151,7 @@ java -cp out bestpractices.SecurityConsiderationsDemo
 - **Basic Concepts**: Variables, data types, control structures
 - **Methods and Functions**: Parameter passing, return values, overloading
 - **Arrays and Collections**: ArrayList, HashMap, iteration patterns
-- **File I/O Operations**: Reading and writing files, stream handling
+- **File I/O Operations**: Reading and writing files, binary operations, stream handling (`src/advanced/FileIODemo.java`)
 
 ### Phase 2: Core Examples ✅
 - **Object-Oriented Programming**: Classes, inheritance, polymorphism, encapsulation
@@ -158,10 +160,10 @@ java -cp out bestpractices.SecurityConsiderationsDemo
 - **Exception Handling**: Try-catch blocks, custom exceptions, best practices
 
 ### Phase 3: Advanced Topics ✅
-- **Design Patterns**: Singleton, Factory, Observer, Strategy, Builder patterns
-- **Concurrency and Multithreading**: Thread pools, synchronization, atomic operations
-- **Stream API and Functional Programming**: Lambda expressions, method references, CompletableFuture
-- **Advanced Collections**: Concurrent collections, custom comparators, performance optimization
+- **Design Patterns**: Singleton, Factory, Observer, Strategy, Builder patterns (`src/patterns/`)
+- **Concurrency and Multithreading**: Thread pools, synchronization, atomic operations (`src/advanced/ConcurrencyDemo.java`, `src/advanced/MultithreadingDemo.java`)
+- **Stream API and Functional Programming**: Lambda expressions, method references, CompletableFuture (`src/advanced/StreamAPIDemo.java`)
+- **File I/O Operations**: Reading and writing files, binary operations, directory management (`src/advanced/FileIODemo.java`)
 
 ### Phase 4: Best Practices ✅
 - **Code Quality Standards**: SOLID principles, clean code practices, error handling

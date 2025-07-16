@@ -40,10 +40,10 @@ Java-Examples/
 - [x] Algorithm examples (Sorting Algorithms)
 
 ### Phase 3: Advanced Topics ✅
-- [x] Design patterns (Singleton, Factory, Observer, Strategy)
-- [x] Concurrency and multithreading (Thread pools, synchronization, atomic operations)
-- [x] Stream API and functional programming (Lambda expressions, CompletableFuture)
-- [x] Java frameworks integration (Concurrent utilities, collections framework)
+- [x] Design patterns (Singleton, Factory, Observer, Strategy) - `src/patterns/`
+- [x] Concurrency and multithreading (Thread pools, synchronization, atomic operations) - `src/advanced/ConcurrencyDemo.java` and `src/advanced/MultithreadingDemo.java`
+- [x] Stream API and functional programming (Lambda expressions, CompletableFuture) - `src/advanced/StreamAPIDemo.java`
+- [x] File I/O operations (Reading and writing files, stream handling) - `src/advanced/FileIODemo.java`
 
 ### Phase 4: Best Practices ✅
 - [x] Code quality standards

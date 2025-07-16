@@ -12,40 +12,93 @@ import java.util.concurrent.Executors;
 /**
  * TestingStrategiesDemo - Demonstrates Java Testing Best Practices
  * 
- * This comprehensive demo covers:
- * - Unit Testing principles and patterns
- * - Test-Driven Development (TDD)
- * - Mocking and stubbing
- * - Integration testing concepts
- * - Test organization and naming
- * - Test data builders and fixtures
- * - Parameterized testing
- * - Performance testing basics
+ * WHY TESTING IS CRITICAL:
+ * Testing is not just about finding bugs - it's about:
+ * - Ensuring code works as intended under various conditions
+ * - Providing confidence when refactoring or adding features
+ * - Serving as living documentation of how code should behave
+ * - Catching regressions early in the development cycle
+ * - Enabling faster development through rapid feedback
+ * - Reducing debugging time and production issues
  * 
- * Note: This demo shows testing concepts without external frameworks
- * but demonstrates patterns commonly used with JUnit, Mockito, etc.
+ * TESTING PYRAMID (from bottom to top):
+ * 1. Unit Tests (70-80%): Fast, isolated, test individual components
+ * 2. Integration Tests (15-20%): Test component interactions
+ * 3. End-to-End Tests (5-10%): Test complete user workflows
+ * 
+ * This comprehensive demo covers:
+ * - Unit Testing principles and patterns (isolated, fast, repeatable tests)
+ * - Test-Driven Development (TDD) (Red-Green-Refactor cycle)
+ * - Mocking and stubbing (isolating units under test)
+ * - Integration testing concepts (testing component interactions)
+ * - Test organization and naming (clear, descriptive test structure)
+ * - Test data builders and fixtures (managing test data consistently)
+ * - Parameterized testing (testing multiple scenarios efficiently)
+ * - Performance testing basics (ensuring code meets performance requirements)
+ * 
+ * IMPORTANT NOTE: This demo implements a simple testing framework for educational purposes.
+ * In real projects, use established frameworks like:
+ * - JUnit 5: Modern, powerful unit testing framework
+ * - Mockito: Mocking framework for isolating dependencies
+ * - AssertJ: Fluent assertion library for readable tests
+ * - TestContainers: Integration testing with real external dependencies
+ * 
+ * LEARNING OBJECTIVES:
+ * 1. Understand the value and principles of automated testing
+ * 2. Learn Test-Driven Development (TDD) methodology
+ * 3. Master mocking techniques for isolated unit testing
+ * 4. Organize tests for maintainability and clarity
+ * 5. Implement performance testing strategies
  * 
  * @author Java Examples Project
  * @version 1.0
  */
 
-// Simple Test Framework Implementation for Demonstration
+// Simple Test Framework Implementation for Educational Demonstration
+// In production code, use JUnit, TestNG, or similar established frameworks
 
 /**
- * Simple assertion utility for demonstration purposes
+ * Simple assertion utility for demonstration purposes.
+ * 
+ * ASSERTION PHILOSOPHY:
+ * Good assertions should:
+ * - Provide clear, descriptive error messages
+ * - Fail fast when expectations aren't met
+ * - Make test failures easy to understand and debug
+ * 
+ * WHY CUSTOM IMPLEMENTATION:
+ * This demonstrates the concepts behind testing frameworks without external dependencies.
+ * Understanding these fundamentals helps you use professional tools more effectively.
  */
 class Assertions {
     
+    /**
+     * Asserts that a condition is true.
+     * 
+     * @param condition The condition to check
+     * @param message Descriptive message for failure case
+     * @throws AssertionError if condition is false
+     */
     public static void assertTrue(boolean condition, String message) {
         if (!condition) {
+            // Throwing AssertionError (not Exception) signals this is a test failure,
+            // not a production error. Testing frameworks use this distinction.
             throw new AssertionError("Assertion failed: " + message);
         }
     }
     
+    /**
+     * Asserts that a condition is false.
+     * Implemented in terms of assertTrue for consistency.
+     */
     public static void assertFalse(boolean condition, String message) {
         assertTrue(!condition, message);
     }
     
+    /**
+     * Asserts that two objects are equal using Objects.equals().
+     * This handles null values correctly, unlike ==.
+     */
     public static void assertEquals(Object expected, Object actual, String message) {
         assertTrue(Objects.equals(expected, actual), 
                   message + " - Expected: " + expected + ", Actual: " + actual);

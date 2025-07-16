@@ -14,15 +14,29 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * CodeQualityDemo - Demonstrates Java Code Quality Standards and Best Practices
  * 
+ * WHY CODE QUALITY MATTERS:
+ * - Reduces bugs and maintenance costs
+ * - Improves team productivity and collaboration
+ * - Makes code easier to understand, modify, and extend
+ * - Enables faster onboarding of new team members
+ * - Reduces technical debt and long-term development costs
+ * 
  * This comprehensive demo covers:
- * - Clean Code principles
- * - SOLID design principles
- * - Naming conventions
- * - Code organization and structure
- * - Error handling best practices
- * - Resource management
- * - Immutability and defensive programming
- * - Documentation standards
+ * - Clean Code principles (meaningful names, small functions, clear intent)
+ * - SOLID design principles (fundamental object-oriented design principles)
+ * - Naming conventions (consistent and descriptive naming)
+ * - Code organization and structure (logical grouping and hierarchy)
+ * - Error handling best practices (proper exception management)
+ * - Resource management (try-with-resources, proper cleanup)
+ * - Immutability and defensive programming (preventing bugs through design)
+ * - Documentation standards (JavaDoc and inline comments)
+ * 
+ * LEARNING OBJECTIVES:
+ * 1. Understand what makes code "clean" and maintainable
+ * 2. Apply SOLID principles in practical scenarios
+ * 3. Write self-documenting code with proper naming
+ * 4. Implement robust error handling strategies
+ * 5. Design immutable objects for thread safety and reliability
  * 
  * @author Java Examples Project
  * @version 1.0
@@ -30,18 +44,42 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 // Example of Clean Code: Well-named classes and methods
+// The following class demonstrates several clean code principles:
+// 1. Immutability - once created, the object cannot be changed
+// 2. Clear naming - class and method names clearly express their purpose
+// 3. Single Responsibility - this class only handles order data
+// 4. Encapsulation - internal state is properly protected
 
 /**
  * Represents a customer order in an e-commerce system.
- * Demonstrates immutability and proper encapsulation.
+ * 
+ * DESIGN DECISIONS EXPLAINED:
+ * 
+ * 1. IMMUTABILITY: This class is immutable (final class, final fields, defensive copying)
+ *    WHY: Immutable objects are thread-safe, easier to reason about, and prevent
+ *    accidental modifications that could lead to bugs.
+ * 
+ * 2. BUILDER PATTERN: Uses a builder for construction
+ *    WHY: Complex objects with many parameters are easier to construct and read
+ *    with a builder. It also allows for validation during construction.
+ * 
+ * 3. DEFENSIVE COPYING: The items list is copied to prevent external modification
+ *    WHY: Even though the object is immutable, if we exposed a mutable collection,
+ *    external code could modify it, breaking the immutability contract.
+ * 
+ * 4. VALIDATION: Constructor validates all parameters
+ *    WHY: Fail-fast principle - catch errors as early as possible rather than
+ *    allowing invalid objects to exist and cause problems later.
  */
 final class CustomerOrder {
+    // All fields are final - once set in constructor, they cannot be changed
+    // This is a key requirement for immutable objects
     private final String orderId;
     private final String customerId;
-    private final List<OrderItem> items;
+    private final List<OrderItem> items;        // Will be defensively copied
     private final double totalAmount;
     private final OrderStatus status;
-    private final long orderTimestamp;
+    private final long orderTimestamp;          // Unix timestamp for precision
     
     /**
      * Creates a new customer order.

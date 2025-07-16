@@ -28,25 +28,89 @@ import javax.crypto.spec.PBEKeySpec;
 /**
  * SecurityConsiderationsDemo - Demonstrates Java Security Best Practices
  * 
+ * WHY SECURITY IS PARAMOUNT:
+ * Security vulnerabilities can lead to:
+ * - Data breaches exposing sensitive customer information
+ * - Financial losses due to fraud or regulatory fines
+ * - Reputation damage and loss of customer trust
+ * - Legal liabilities and compliance violations
+ * - Service disruptions and business continuity issues
+ * 
+ * SECURITY PRINCIPLES:
+ * 1. Defense in Depth: Multiple layers of security controls
+ * 2. Principle of Least Privilege: Grant minimal necessary permissions
+ * 3. Fail Securely: When something goes wrong, fail to a secure state
+ * 4. Security by Design: Build security in from the beginning
+ * 5. Never Trust User Input: Validate and sanitize everything
+ * 6. Keep It Simple: Complex security is often insecure security
+ * 
+ * COMMON VULNERABILITY CATEGORIES (OWASP Top 10):
+ * 1. Injection attacks (SQL, NoSQL, Command injection)
+ * 2. Broken authentication and session management
+ * 3. Cross-Site Scripting (XSS)
+ * 4. Insecure direct object references
+ * 5. Security misconfiguration
+ * 6. Sensitive data exposure
+ * 7. Missing function level access control
+ * 8. Cross-Site Request Forgery (CSRF)
+ * 9. Using components with known vulnerabilities
+ * 10. Unvalidated redirects and forwards
+ * 
  * This comprehensive demo covers:
- * - Input validation and sanitization
- * - Secure password handling
- * - Cryptographic operations
- * - Secure random number generation
- * - SQL injection prevention
- * - Cross-site scripting (XSS) prevention
- * - Path traversal protection
- * - Secure coding practices
+ * - Input validation and sanitization (preventing injection attacks)
+ * - Secure password handling (proper hashing and storage)
+ * - Cryptographic operations (encryption, signatures, hashing)
+ * - Secure random number generation (for keys, tokens, etc.)
+ * - SQL injection prevention (parameterized queries)
+ * - Cross-site scripting (XSS) prevention (output encoding)
+ * - Path traversal protection (file access security)
+ * - Secure coding practices (comprehensive security mindset)
+ * 
+ * CRYPTOGRAPHIC BEST PRACTICES:
+ * - Use well-established algorithms (AES, RSA, SHA-256)
+ * - Never implement custom cryptographic algorithms
+ * - Use appropriate key sizes (AES-256, RSA-2048+)
+ * - Generate truly random keys and initialization vectors
+ * - Implement proper key management and rotation
+ * - Use authenticated encryption modes (GCM, CCM)
+ * 
+ * LEARNING OBJECTIVES:
+ * 1. Understand common security vulnerabilities and how to prevent them
+ * 2. Implement robust input validation and output sanitization
+ * 3. Use cryptography correctly and securely
+ * 4. Apply secure coding practices throughout development
+ * 5. Design security controls that are both effective and usable
  * 
  * @author Java Examples Project
  * @version 1.0
  */
 
 // Input Validation Examples
+// Input validation is the first line of defense against many security vulnerabilities.
+// The principle: "Never trust user input" - validate everything that comes from outside your application.
 
 class InputValidator {
     
-    // Secure patterns for common validations
+    /*
+     * REGEX PATTERN SECURITY CONSIDERATIONS:
+     * 
+     * 1. Email validation: Strict enough to prevent obvious attacks but not so strict
+     *    as to reject valid email addresses. Real email validation is complex!
+     * 
+     * 2. Phone validation: Supports international E.164 format
+     * 
+     * 3. Username validation: Alphanumeric and underscore only, reasonable length limits
+     * 
+     * 4. Filename validation: Prevents path traversal and dangerous characters
+     * 
+     * WHY PRE-COMPILED PATTERNS:
+     * - Regex compilation is expensive - do it once, reuse many times
+     * - Static final ensures thread safety and immutability
+     * - Better performance in high-throughput applications
+     */
+    
+    // Email pattern: reasonably strict but not overly restrictive
+    // This catches most malicious input while allowing legitimate email formats
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
         "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
     );

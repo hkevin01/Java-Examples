@@ -8,7 +8,7 @@
     "java.sources.organizeImports.staticStarThreshold": 99,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.organizeImports": "explicit"
     },
     "files.exclude": {
         "**/.classpath": true,

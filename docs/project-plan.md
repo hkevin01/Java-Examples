@@ -35,11 +35,11 @@ Java-Examples/
 - [x] Data structures implementations (Stack, Queue)
 - [x] Algorithm examples (Sorting Algorithms)
 
-### Phase 3: Advanced Topics
-- [ ] Design patterns
-- [ ] Concurrency and multithreading
-- [ ] Stream API and functional programming
-- [ ] Java frameworks integration
+### Phase 3: Advanced Topics ✅
+- [x] Design patterns (Singleton, Factory, Observer, Strategy)
+- [x] Concurrency and multithreading (Thread pools, synchronization, atomic operations)
+- [x] Stream API and functional programming (Lambda expressions, CompletableFuture)
+- [x] Java frameworks integration (Concurrent utilities, collections framework)
 
 ### Phase 4: Best Practices
 - [ ] Code quality standards

@@ -29,11 +29,11 @@ Java-Examples/
 - [x] Configure development environment
 - [x] Set up CI/CD pipelines
 
-### Phase 2: Core Examples 🚧
-- [ ] Basic Java syntax examples
+### Phase 2: Core Examples ✅
+- [x] Basic Java syntax examples (Variables, Control Structures, Methods, Arrays & Collections)
 - [x] Object-oriented programming concepts (Access Modifiers, Polymorphism)
-- [ ] Data structures implementations
-- [ ] Algorithm examples
+- [x] Data structures implementations (Stack, Queue)
+- [x] Algorithm examples (Sorting Algorithms)
 
 ### Phase 3: Advanced Topics
 - [ ] Design patterns
